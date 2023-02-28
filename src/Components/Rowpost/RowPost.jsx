@@ -1,6 +1,8 @@
-import React from 'react'
+import React,{useEffect,useState} from 'react'
 import "./RowPost.css"
 function RowPost() {
+      
+
   return (
     <div className='row'>
         <h2>Title</h2>
