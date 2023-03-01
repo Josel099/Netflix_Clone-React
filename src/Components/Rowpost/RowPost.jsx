@@ -2,9 +2,10 @@ import React,{useEffect,useState} from 'react'
 import "./RowPost.css"
 import youtube  from "react-youtube"
 import axios from "../constants/axios"
-import { imageUrl } from '../constants/constant' 
+import { imageUrl,API_KEY } from '../constants/constant' 
 import YouTube from 'react-youtube'
 function RowPost(props) {
+  const [urlId,setUrlId] = useState('');
   const [movies,setMovies] = useState([])
       useEffect(() => {
         axios.get(props.url).then(response =>{
@@ -18,10 +19,20 @@ function RowPost(props) {
         width: '100%',
         playerVars: {
           // https://developers.google.com/youtube/player_parameters
-          autoplay: 0,
+          autoplay: 1,
         },
       };
       
+const handleMovie  = (id)=>{
+axios.get(' link from the imdb youtube').then(response=>{
+if(response.data.results.length != 0){
+  setUrlId(response.data.results[0])
+}
+else{
+  console.log("Array empty")
+}
+})
+}
 
   return (
     <div className='row'>
@@ -29,10 +40,10 @@ function RowPost(props) {
         <div className='posters'>
 
           {movies.map((obj)=>{
-           <img className={props.isSmall ? "smallPoster" : "poster" } alt="poster" src={`${imageUrl.obj.backdrop_path}`}></img>
+           <img onClick={()=>handleMovie(obj.id)} className={props.isSmall ? "smallPoster" : "poster" } alt="poster" src={`${imageUrl.obj.backdrop_path}`}></img>
           })}
        </div>
-      <YouTube opts={opts} videoId="2g811Eo7K8U"/>
+     {urlId && <YouTube opts={opts} videoId={urlId.key}/> }
     </div>
   )
 }
