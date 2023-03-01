@@ -1,11 +1,11 @@
 import React,{useEffect,useState} from 'react'
 import "./RowPost.css"
 import axios from "../constants/axios"
-import { API_KEY,imageUrl } from '../constants/constant' 
+import { imageUrl } from '../constants/constant' 
 function RowPost(props) {
   const [movies,setMovies] = useState([])
       useEffect(() => {
-        axios.get(`discover/tv?api_key=${API_KEY}&with_networks=213`).then(response =>{
+        axios.get(props.url).then(response =>{
           setMovies(response.data.results)
         })
       
