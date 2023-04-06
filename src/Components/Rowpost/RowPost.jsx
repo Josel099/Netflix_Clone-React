@@ -38,11 +38,11 @@ else{
     <div className='row'>
         <h2>{props.title}</h2>
         <div className='posters'>
+  {movies.map((obj) => {
+    return <img onClick={() => handleMovie(obj.id)} className={props.isSmall ? "smallPoster" : "poster"} alt="poster" src={`${imageUrl.obj.backdrop_path}`}></img>;
+  })}
+</div>
 
-          {movies.map((obj)=>{
-           <img onClick={()=>handleMovie(obj.id)} className={props.isSmall ? "smallPoster" : "poster" } alt="poster" src={`${imageUrl.obj.backdrop_path}`}></img>
-          })}
-       </div>
      {urlId && <YouTube opts={opts} videoId={urlId.key}/> }
     </div>
   )
