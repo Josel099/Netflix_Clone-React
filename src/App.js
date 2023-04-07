@@ -13,7 +13,7 @@ function App() {
       <RowPost url={action} title='Action' isSmall/>
       <RowPost url={comedy} title='Comedy' isSmall/>
       <RowPost url={horror} title='Horror' isSmall/>
-      <RowPost url={action} title='Action' isSmall/>
+      <RowPost url={romance} title='Romance' isSmall/>
       <RowPost url={action} title='Action' isSmall/>
     </div>
   );
